@@ -12,7 +12,7 @@ const PizzaSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: (createdAtVal) => dateFormat(createdAtVal)
+        get: (createdAtVal) => dateFormat(createdAtVal) // this is a getter, which transforms the data before it gets to the controller
     },
     size: {
         type: String,
@@ -35,7 +35,7 @@ const PizzaSchema = new Schema({
 }
 );
 
-// get total count of comments and replies on retrieval
+// get total count of comments and replies on retrieval; this is a virtual
 PizzaSchema.virtual('commentCount').get(function() {
     return this.comments.length;
 })
